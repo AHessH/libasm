@@ -6,7 +6,7 @@
 #    By: froxanne <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/09/03 17:48:03 by froxanne          #+#    #+#              #
-#    Updated: 2020/09/03 18:09:26 by froxanne         ###   ########.fr        #
+#    Updated: 2020/09/03 18:13:20 by froxanne         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -23,7 +23,7 @@ all: $(NAME)
 
 $(NAME): $(OBJS)
 	ar rcs $(NAME) $?
-
+	ranlib
 test:
 	gcc -Wall -Werror -Wextra -L. -lasm $(MAIN)
 
