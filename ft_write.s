@@ -1,6 +1,6 @@
-section.text
-	
+section .text
 	global _ft_write
 
 _ft_write:
-	mov %rax 
+	mov rax, 0x2000001
+	ret

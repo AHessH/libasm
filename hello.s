@@ -1,25 +1,14 @@
-.code32
-.data
-	hello_str:
-		.string "Hello world\n"
-		.set hello_str_length, . - hello_str - 1
+          global    _start
 
-.text
+          section   .text
+_start:   mov       rax, 1                  ; system call for write
+          mov       rdi, 1                  ; file handle 1 is stdout
+          mov       rsi, message            ; address of string to output
+          mov       rdx, 13                 ; number of bytes
+          syscall                           ; invoke operating system to do the write
+          mov       rax, 60                 ; system call for exit
+          xor       rdi, rdi                ; exit code 0
+          syscall                           ; invoke operating system to exit
 
-.globl main
-
-.type main, @function
-
-main:
-	movl $4, %eax
-	movl $1, %ebx
-	movl $hello_str, %ecx
-	movl $hello_str_length, %edx
-
-	int $0x80
-
-	movl $1, %eax
-	movl $0, %ebx
-	int $0x80
-	
-	.size main, . - main
+          section   .data
+message:  db        "Hello, World", 10 
