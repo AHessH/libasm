@@ -6,26 +6,28 @@
 #    By: froxanne <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/09/03 17:48:03 by froxanne          #+#    #+#              #
-#    Updated: 2020/09/03 18:13:20 by froxanne         ###   ########.fr        #
+#    Updated: 2020/09/03 21:34:08 by froxanne         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 MAIN = main.c
 NAME = libasm.a
-SRCS = ft_write.s
+SRCS =	ft_write.s \
+		ft_strlen.s
 OBJS = $(SRCS:.s=.o)
+COMP_FLAGS = -Wall -Werror -Wextra
 
 
 %.o:%.s
-	nasm -f macho64 $<
+	nasm -felf64 $<
 
 all: $(NAME)
 
 $(NAME): $(OBJS)
 	ar rcs $(NAME) $?
-	ranlib
-test:
-	gcc -Wall -Werror -Wextra -L. -lasm $(MAIN)
+
+tests:
+	gcc -L. -lasm $(MAIN) -o test.out
 
 clean:
 	rm -rf *.o

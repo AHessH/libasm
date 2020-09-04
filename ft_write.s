@@ -3,4 +3,5 @@ section .text
 
 _ft_write:
 	mov rax, 0x2000001
-	ret
+	syscall
+	
