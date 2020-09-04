@@ -6,34 +6,41 @@
 #    By: froxanne <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/09/03 17:48:03 by froxanne          #+#    #+#              #
-#    Updated: 2020/09/03 21:34:08 by froxanne         ###   ########.fr        #
+#    Updated: 2020/09/04 15:16:56 by froxanne         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-MAIN = main.c
-NAME = libasm.a
-SRCS =	ft_write.s \
-		ft_strlen.s
-OBJS = $(SRCS:.s=.o)
+MAIN =	main.c
+NAME =	libasm.a
+SRCS =	ft_strlen.s \
+		ft_write.s \
+		ft_read.s
+OBJS =	$(SRCS:.s=.o)
 COMP_FLAGS = -Wall -Werror -Wextra
 
 
 %.o:%.s
-	nasm -felf64 $<
+	@nasm -f elf64 $<
 
 all: $(NAME)
 
 $(NAME): $(OBJS)
-	ar rcs $(NAME) $?
+	@ar rc $(NAME) $?
+	@ranlib $(NAME)
 
-tests:
-	gcc -L. -lasm $(MAIN) -o test.out
+test:
+	@gcc $(COMP_FLAGS) $(MAIN) -L. -lasm
+	./a.out
 
 clean:
-	rm -rf *.o
+	@rm -rf *.o
 
-fclean: clean
-	rm -rf *.a
-	rm -rf ./a.out
+clean_test:
+	@rm -rf ./a.out
+
+fclean: clean clean_test
+	@rm -rf *.a
 
 re: fclean all
+
+retest: fclean all test

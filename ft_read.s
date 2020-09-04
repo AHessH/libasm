@@ -1,9 +1,9 @@
 extern __errno_location
-global ft_write
+global ft_read
 section .text
 
 ft_read:
-	mov rax, 1
+	mov rax, 0
 	syscall
 	cmp rax, 0
 	jl error
