@@ -2,6 +2,7 @@
 #include <unistd.h>
 #include <string.h>
 #include <errno.h>
+#include <time.h>
 
 #define CMP_STRLEN(str) (ft_strlen(str) != strlen(str))
 
@@ -12,6 +13,8 @@
 int				ft_write(int, char *, int);
 unsigned int	ft_strlen(char const *);
 int				ft_read(int, char *, int);
+int				ft_strcmp(char *, char *);
+
 int		check_strlen()
 {
 	if (CMP_STRLEN("hello"))
@@ -27,18 +30,18 @@ int		check_strlen()
 
 int		main(void)
 {
-	// if (check_strlen())
-	// 	printf("STRLEN is OK\n");
+	if (check_strlen())
+		printf("STRLEN is OK\n");
 	
-	// int len = ft_write(10, "111", 0);
-	// printf("ftlen = %d\n", len);
-	// len = write(10, "111", 0);
-	// printf("stdlen = %d\n", len);
-
-	char str[10];
-	int len = ft_read(10, str, 5);
-	str[len] = 0;
-	printf("error = %s %d\n", strerror(errno), errno);
-	printf("len = %d str = |%s|\n", len, str);
+	printf("ret_value is %d std is %d\n", ft_strcmp("ma", "me"), strcmp("ml", "me"));
+	// int len = ft_write(1, "111", 3);
+	// printf(" ftlen = %d\n", len);
+	// len = write(1, "111", 3);
+	// printf(" stdlen = %d\n", len);
+	// char str[10];
+	// int len = ft_read(10, str, 5);
+	// str[len] = 0;
+	// printf("error = %s %d\n", strerror(errno), errno);
+	// printf("len = %d str = |%s|\n", len, str);
 	return (0);
 }
