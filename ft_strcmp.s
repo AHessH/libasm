@@ -24,8 +24,6 @@ compare:
 check_last:
 			xor			rax, rax
 			mov			al, BYTE [rdi + rcx]
-			;sub			al, BYTE [rsi + rcx]
-			;ret 		for return the difference, revision required
 			cmp			al, 0
 			jz			zero
 			jg			greater

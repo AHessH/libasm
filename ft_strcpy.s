@@ -10,7 +10,7 @@ ft_strcpy: ;str1 = rdi const str2 = rsi
 			jz		return
 			jmp		cpy
 increment:
-			inc rcx
+			inc		rcx
 cpy:
 			mov		al, BYTE [rsi + rcx]
 			mov		BYTE [rdi + rcx], al

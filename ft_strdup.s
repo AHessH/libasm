@@ -23,14 +23,14 @@ dup:
 			xor			rdx, rdx
 			jmp			cpy
 increment_cpy:
-			inc		rcx
+			inc			rcx
 cpy: ;str = rdi newstr = rax
-			mov		dl, BYTE [rdi + rcx]
-			mov		BYTE [rax + rcx], dl
-			cmp		dl, 0
-			jnz		increment_cpy
+			mov			dl, BYTE [rdi + rcx]
+			mov			BYTE [rax + rcx], dl
+			cmp			dl, 0
+			jnz			increment_cpy
 return:
 			ret
 fail_exit:
-			mov		rax, 0
+			mov			rax, 0
 			ret
