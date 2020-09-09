@@ -3,7 +3,9 @@ section .text
 extern malloc
 
 ft_strdup:									; str = rdi
-			xor			rax, rax			; len = 0
+			xor			rax, rax		; len = 0
+			cmp			rdi, 0
+			jz			fail_exit
 len:
 			jmp short	compare
 increment_len:

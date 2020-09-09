@@ -15,19 +15,25 @@ empty_string:
 			jz			zero
 			jg			greater
 			jl			smallest
-
+increment:
+			inc			rcx
 compare:
+			cmp			BYTE [rdi + rcx], 0
+			je			check_last
+			cmp			BYTE [rsi + rcx], 0
+			je			check_last
 			mov			al, BYTE [rsi + rcx]
 			cmp			BYTE [rdi + rcx], al
 			jne			check_last
-			inc			rcx
+			jmp			increment
+
 check_last:
-			xor			rax, rax
 			mov			al, BYTE [rdi + rcx]
+			sub			al, BYTE [rsi + rcx]
 			cmp			al, 0
 			jz			zero
-			jg			greater
 			jl			smallest
+			jmp			greater
 zero:
 			mov			rax, 0
 			ret
@@ -35,5 +41,5 @@ greater:
 			mov			rax, 1
 			ret
 smallest:
-			mov			rax, 1
+			mov			rax, -1
 			ret
