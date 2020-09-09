@@ -1,4 +1,5 @@
 #include <stdio.h>
+#include <stdlib.h>
 #include <unistd.h>
 #include <string.h>
 #include <errno.h>
@@ -14,7 +15,8 @@ int				ft_write(int, char *, int);
 unsigned int	ft_strlen(char const *);
 int				ft_read(int, char *, int);
 int				ft_strcmp(char *, char *);
-
+char			*ft_strcpy(char *, char *);
+char			*ft_strdup(char *);
 int		check_strlen()
 {
 	if (CMP_STRLEN("hello"))
@@ -30,10 +32,11 @@ int		check_strlen()
 
 int		main(void)
 {
-	if (check_strlen())
-		printf("STRLEN is OK\n");
+
+	// if (check_strlen())
+	// 	printf("STRLEN is OK\n");
 	
-	printf("ret_value is %d std is %d\n", ft_strcmp("ma", "me"), strcmp("ml", "me"));
+	// printf("ret_value is %d std is %d\n", ft_strcmp("ma", "me"), strcmp("ml", "me"));
 	// int len = ft_write(1, "111", 3);
 	// printf(" ftlen = %d\n", len);
 	// len = write(1, "111", 3);
@@ -43,5 +46,17 @@ int		main(void)
 	// str[len] = 0;
 	// printf("error = %s %d\n", strerror(errno), errno);
 	// printf("len = %d str = |%s|\n", len, str);
+	// char *buf = NULL;
+	// char *str = "Hello";
+	// ft_strcpy(buf, str);
+	// printf("buf = %s\n", buf);
+	
+	char *str = "hello";
+	char *new_str;
+	if ((new_str = ft_strdup(str)))
+		printf("new str = %s\n", new_str);
+	new_str[2] = 'a';
+	printf("str = %s, new_str = %s\n", str, new_str);
+	
 	return (0);
 }

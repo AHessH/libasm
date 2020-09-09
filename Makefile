@@ -6,7 +6,7 @@
 #    By: froxanne <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/09/03 17:48:03 by froxanne          #+#    #+#              #
-#    Updated: 2020/09/07 21:00:48 by froxanne         ###   ########.fr        #
+#    Updated: 2020/09/09 12:34:54 by froxanne         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,7 +15,9 @@ NAME =	libasm.a
 SRCS =	ft_strlen.s \
 		ft_write.s \
 		ft_read.s \
-		ft_strcmp.s
+		ft_strcmp.s \
+		ft_strcpy.s \
+		ft_strdup.s
 OBJS =	$(SRCS:.s=.o)
 COMP_FLAGS = -Wall -Werror -Wextra -g
 

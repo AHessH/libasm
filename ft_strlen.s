@@ -1,7 +1,7 @@
 			global	ft_strlen
 			section	.text
 
-ft_strlen:
+ft_strlen:	; str = rdi
 			xor			rax, rax			; i = 0
 			jmp short	compare
 increment:
